@@ -18,12 +18,7 @@ class _DashboardPageState extends State<DashboardPage> {
 
   @override
   void initState() {
-    _widget = [
-      HomePage(),
-      CategoryPage(),
-      OrderPage(),
-      ProfilePage(),
-    ];
+    _widget = [HomePage(), CategoryPage(), OrderPage(), ProfilePage()];
     super.initState();
   }
 
@@ -35,16 +30,6 @@ class _DashboardPageState extends State<DashboardPage> {
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: true,
         showUnselectedLabels: true,
-        selectedItemColor: AppColors.primaryColor,
-        unselectedItemColor: AppColors.textColor,
-        unselectedLabelStyle: TextStyle(color: AppColors.textColor),
-        selectedLabelStyle: TextStyle(color: AppColors.primaryColor),
-        onTap: (index) {
-          // index == 1
-          setState(() {
-            selectIndex = index;
-          });
-        },
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_filled),

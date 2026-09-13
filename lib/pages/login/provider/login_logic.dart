@@ -6,7 +6,6 @@ class LoginLogic extends ChangeNotifier {
   LoginState _loginState = LoginState.initial();
 
   LoginState get loginState => _loginState;
-
   void changePassword({required bool isShowPassword}) {
     _loginState = loginState.copyWith(isShowpassword: isShowPassword);
     notifyListeners();
@@ -23,7 +22,7 @@ class LoginLogic extends ChangeNotifier {
       password: password,
       fullName: fullName,
       id: id,
-    ); 
+    );
     _loginState = loginState.copyWith(signUpModel: data);
   }
 }
