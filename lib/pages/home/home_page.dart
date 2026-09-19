@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-     WidgetsBinding.instance.addPostFrameCallback((call) {
+    WidgetsBinding.instance.addPostFrameCallback((call) {
       context.read<HomeLogic>().getListProduct();
     });
   }
@@ -70,8 +70,8 @@ class _HomePageState extends State<HomePage> {
                 height: 180,
                 viewportFraction: 1,
                 autoPlayInterval: Duration(seconds: 2),
-                // autoPlay: true,
-                // autoPlayAnimationDuration: Duration(milliseconds: 200)
+                autoPlay: true,
+                autoPlayAnimationDuration: Duration(milliseconds: 200),
               ),
             ),
             SizedBox(height: 10),

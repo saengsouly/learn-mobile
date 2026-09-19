@@ -23,7 +23,7 @@ class LoginLogic extends ChangeNotifier {
       password: password,
       fullName: fullName,
       id: id,
-    ); 
+    );
     _loginState = loginState.copyWith(signUpModel: data);
   }
 }
