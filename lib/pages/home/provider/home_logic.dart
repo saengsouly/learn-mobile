@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:learn_app/constants/data_demo.dart';
+import 'package:learn_app/models/cart_model.dart';
 import 'package:learn_app/pages/home/provider/home_state.dart';
 
 import '../../../models/products_model.dart';
@@ -29,7 +30,37 @@ class HomeLogic extends ChangeNotifier {
     } catch (e) {
       print('error ==>$e');
       _homeState = homeState.copyWith(homeStatus: HomeStatus.error);
-       notifyListeners();
+      notifyListeners();
+    }
+  }
+
+  // ເພີ່ມເຂົ້າກະຕ່າ
+  void addToCart(int index) {
+    ProductsModel item = _homeState.productList[index];
+    if (_homeState.cartList?.isNotEmpty ?? false) {
+      for (var i = 0; i < (_homeState.cartList ?? []).length; i++) {
+        // ກວດວ່າ id ເທົ່າກນບໍ
+        if (item.id == _homeState.cartList?[i].product?.id) {
+          // print('qty ===>${_homeState.cartList?[i].qty}');
+          int newQty = (_homeState.cartList?[i].qty ?? 0) + 1;
+          print('new qty ==>$newQty');
+          // cartList = [ProductModel,ProductModel,ProductModel];
+          // [1,2,3,4,5]
+           _homeState = _homeState.copyWith(cartList: _homeState.cartList);
+        } else {
+          // ເພີ່ມໃໝ່ເຂົ້າກະຕ່າ ຊື່ cartList.
+          List<CartModel> cart = _homeState.cartList ?? [];
+          cart.add(CartModel(qty: 1, product: item));
+          _homeState = homeState.copyWith(cartList: cart);
+          notifyListeners();
+        }
+      }
+    } else {
+      // ເພີ່ມເຂົ້າໃໝ່ຄັ້ງທຳອິດທີ່ຍັງບໍ່ທັນມີ data
+      List<CartModel> cart = _homeState.cartList ?? [];
+      cart.add(CartModel(qty: 1, product: item));
+      _homeState = homeState.copyWith(cartList: cart);
+      notifyListeners();
     }
   }
 }
