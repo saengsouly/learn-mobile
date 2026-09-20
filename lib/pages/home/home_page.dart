@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:learn_app/constants/app_color.dart';
 import 'package:learn_app/constants/app_image.dart';
 import 'package:learn_app/constants/data_demo.dart';
+import 'package:learn_app/pages/home/components/product_list.dart';
 import 'package:learn_app/pages/home/provider/home_logic.dart';
 import 'package:learn_app/widgets/my_text_style.dart';
 import 'package:provider/provider.dart';
@@ -83,23 +84,24 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             // ການສະເເດງລາຍການສິນຄ້າທີມີ Gridview
-            GridView.builder(
-              physics: NeverScrollableScrollPhysics(),
-              scrollDirection: Axis.vertical,
-              itemCount: 30,
-              shrinkWrap: true,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-              ),
-              itemBuilder: (context, index) {
-                return Container(
-                  color: Colors.green,
-                  child: Text('index ${index}'),
-                );
-              },
-            ),
+            // GridView.builder(
+            //   physics: NeverScrollableScrollPhysics(),
+            //   scrollDirection: Axis.vertical,
+            //   itemCount: 30,
+            //   shrinkWrap: true,
+            //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            //     crossAxisCount: 2,
+            //     crossAxisSpacing: 10,
+            //     mainAxisSpacing: 10,
+            //   ),
+            //   itemBuilder: (context, index) {
+            //     return Container(
+            //       color: Colors.green,
+            //       child: Text('index ${index}'),
+            //     );
+            //   },
+            // ),
+            ProductList(),
           ],
         ),
       ),
