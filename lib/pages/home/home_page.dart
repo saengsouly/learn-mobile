@@ -16,7 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   void initState() {
     super.initState();
@@ -25,11 +24,9 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      
       child: SingleChildScrollView(
         padding: EdgeInsets.only(left: 16, right: 16, top: 20, bottom: 20),
         child: Column(
@@ -87,26 +84,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             // ການສະເເດງລາຍການສິນຄ້າທີມີ Gridview
-<<<<<<< HEAD
-            // GridView.builder(
-            //   physics: NeverScrollableScrollPhysics(),
-            //   scrollDirection: Axis.vertical,
-            //   itemCount: 30,
-            //   shrinkWrap: true,
-            //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            //     crossAxisCount: 2,
-            //     crossAxisSpacing: 10,
-            //     mainAxisSpacing: 10,
-            //   ),
-            //   itemBuilder: (context, index) {
-            //     return Container(
-            //       color: Colors.green,
-            //       child: Text('index ${index}'),
-            //     );
-            //   },
-            // ),
-=======
->>>>>>> upstream/main
             ProductList(),
           ],
         ),
