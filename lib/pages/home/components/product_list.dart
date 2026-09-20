@@ -33,7 +33,11 @@ class ProductList extends StatelessWidget {
               .length, // ບອກໃຫ້ Gridview ຮູ້ວ່າ List ຂອງເຮົາມີຈຳນວນ item ເທົ່າໃດ
           shrinkWrap: true,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+<<<<<<< HEAD
             crossAxisCount: 2,
+=======
+            crossAxisCount: 3,
+>>>>>>> upstream/main
             crossAxisSpacing: 8,
             mainAxisSpacing: 12,
             childAspectRatio: 0.65,
