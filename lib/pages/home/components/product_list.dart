@@ -60,7 +60,8 @@ class ProductList extends StatelessWidget {
               },
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.grey,
+                  // color: Colors.grey,
+                  color: AppColors.whiteColor,
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Stack(
@@ -136,7 +137,7 @@ class ProductList extends StatelessWidget {
                               Spacer(),
                               GestureDetector(
                                 onTap: (){
-                                  context.read<HomeLogic>().addToCart(index);
+                                  context.read<HomeLogic>().addToCart(item.id ?? 0);
                                 },
                                 child: Container(
                                   padding: EdgeInsets.all(4),

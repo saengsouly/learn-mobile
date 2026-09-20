@@ -35,32 +35,68 @@ class HomeLogic extends ChangeNotifier {
   }
 
   // ເພີ່ມເຂົ້າກະຕ່າ
-  void addToCart(int index) {
-    ProductsModel item = _homeState.productList[index];
-    if (_homeState.cartList?.isNotEmpty ?? false) {
-      for (var i = 0; i < (_homeState.cartList ?? []).length; i++) {
-        // ກວດວ່າ id ເທົ່າກນບໍ
-        if (item.id == _homeState.cartList?[i].product?.id) {
-          // print('qty ===>${_homeState.cartList?[i].qty}');
-          int newQty = (_homeState.cartList?[i].qty ?? 0) + 1;
-          print('new qty ==>$newQty');
-          // cartList = [ProductModel,ProductModel,ProductModel];
-          // [1,2,3,4,5]
-           _homeState = _homeState.copyWith(cartList: _homeState.cartList);
-        } else {
-          // ເພີ່ມໃໝ່ເຂົ້າກະຕ່າ ຊື່ cartList.
-          List<CartModel> cart = _homeState.cartList ?? [];
-          cart.add(CartModel(qty: 1, product: item));
-          _homeState = homeState.copyWith(cartList: cart);
-          notifyListeners();
-        }
-      }
+  void addToCart(int id) {
+    // ProductsModel item = _homeState.productList[index];
+    // ສຳເນົາ List ເກົ່າອອກມາສ້າງເປັນ List ໃໝ່
+    List<CartModel> newCopyCart = List<CartModel>.from(
+      _homeState.cartList ?? [],
+    );
+    // [CartModel,]
+    //ຫາຕຳເເໜ່ງ index ຂອງສິນຄ້າທີ່ມີຢູ່ໃນກະຕ່າ,ຖ້າບໍ່ເຫັນມັນຈະໄດ້ເປັນ -1
+    int indexItem = newCopyCart.indexWhere((e) => e.product?.id == id);
+    if (indexItem != -1) {
+      // ຖ້າວ່າມີເເລ້ວ ເເມ່ນໃຫ້ບວກ 1 ເຂົ້າໄປ
+      newCopyCart[indexItem].qty = newCopyCart[indexItem].qty + 1;
+      print('qty ==${newCopyCart[indexItem].qty}');
     } else {
-      // ເພີ່ມເຂົ້າໃໝ່ຄັ້ງທຳອິດທີ່ຍັງບໍ່ທັນມີ data
-      List<CartModel> cart = _homeState.cartList ?? [];
-      cart.add(CartModel(qty: 1, product: item));
-      _homeState = homeState.copyWith(cartList: cart);
-      notifyListeners();
+      ProductsModel item = _homeState.productList.singleWhere(
+        (e) => e.id == id,
+      );
+
+      // List<ProductsModel> items = _homeState.productList
+      //     .where((e) => e.id == id)
+      //     .toList();
+      // ProductsModel? items;
+      // for (var i = 0; i < _homeState.productList.length; i++) {
+      //   if(_homeState.productList[i].id == id){
+      //     items = _homeState.productList[i];
+      //     break;
+      //   }
+      // }
+      // ຖ້າວ່າຍັງບໍ່ມີ ເເມ່ນໃຫ້ເພີ່ມເປັນລາຍການໃໝ່
+      newCopyCart.add(CartModel(qty: 1, product: item));
     }
+    _homeState = homeState.copyWith(cartList: newCopyCart);
+    notifyListeners();
+  }
+
+  // ລົບຈຳນວນອອກຈາກກະຕ່າ
+  void removeCart(int id) {
+    // ProductsModel item = _homeState.productList[index];
+    // ສຳເນົາ List ເກົ່າອອກມາສ້າງເປັນ List ໃໝ່
+    List<CartModel> newCopyCart = List<CartModel>.from(
+      _homeState.cartList ?? [],
+    );
+    //ຫາຕຳເເໜ່ງ index ຂອງສິນຄ້າທີ່ມີຢູ່ໃນກະຕ່າ,ຖ້າບໍ່ເຫັນມັນຈະໄດ້ເປັນ -1
+    int indexItem = newCopyCart.indexWhere((e) => e.product?.id == id);
+
+    if (indexItem == -1)return; // ຖ້າວ່າຫາຕຳເເໜ່ງໃນ list ບໍ່ພົບເຫັນບອກໃຫ້ program ຢຸດເຮັດວຽກທັນທີ
+    if (newCopyCart[indexItem].qty > 1) {
+      // ກວດສອບວ່າ ຖ້າຈຳນວນໃນ index ນັ້ນໃຫ່ຍກວ່າ 1 ເເມ່ນໃຫ້ລົບ
+      newCopyCart[indexItem].qty = newCopyCart[indexItem].qty - 1;
+    } else {
+      // ຖ້າຈຳນວນນ້ອຍກວ່າ 1 ເເມ່ນໃຫ້ລົບອອກຈາກ list ເລີຍ
+      newCopyCart.removeAt(indexItem);
+    }
+    // ເອົາຂໍ້ມູນກ້ອນໃໝ່ໄປເເທນຂໍ້ມູນເກົ່າທີ່ມີຢູ່ໃນ cartList ນັ້ນ
+    _homeState = homeState.copyWith(cartList: newCopyCart);
+    notifyListeners();
+  }
+
+  // ລົບກະຕ່າຖີ້ມ
+  void deleteAllCart() {
+     _homeState.cartList?.clear();
+    // _homeState = homeState.copyWith(cartList: []);
+    notifyListeners();
   }
 }

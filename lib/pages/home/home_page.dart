@@ -4,6 +4,8 @@ import 'package:learn_app/constants/app_color.dart';
 import 'package:learn_app/constants/app_image.dart';
 import 'package:learn_app/constants/data_demo.dart';
 import 'package:learn_app/models/products_model.dart';
+import 'package:learn_app/pages/cart/cart_page.dart';
+import 'package:learn_app/pages/home/components/badges_product.dart';
 import 'package:learn_app/pages/home/components/product_list.dart';
 import 'package:learn_app/pages/home/provider/home_logic.dart';
 import 'package:learn_app/widgets/my_text_style.dart';
@@ -51,7 +53,15 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Spacer(),
                 IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-                IconButton(onPressed: () {}, icon: Icon(Icons.shopping_bag)),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CartPage()),
+                    );
+                  },
+                  child: BadgesProduct(),
+                ),
               ],
             ),
             // ສະເເດງ slide ສິນຄ້າ,ໂຄສະນະ

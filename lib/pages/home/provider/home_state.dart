@@ -7,7 +7,7 @@ enum HomeStatus { initial, loading, success, error }
 class HomeState {
   HomeStatus homeStatus;
   List<ProductsModel> productList;
-  List<CartModel>? cartList;
+  List<CartModel>? cartList; // [CartModel,CartModel]
 
   HomeState({
     this.homeStatus = HomeStatus.initial,
