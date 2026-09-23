@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart' as carousel;
 import 'package:flutter/material.dart';
 import 'package:learn_app/constants/app_color.dart';
 import 'package:learn_app/constants/app_image.dart';
@@ -20,6 +20,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List<ProductsModel> cartList = [];
+
+  Null get carousel => null;
 
   @override
   void initState() {
@@ -66,7 +68,7 @@ class _HomePageState extends State<HomePage> {
             ),
             // ສະເເດງ slide ສິນຄ້າ,ໂຄສະນະ
             SizedBox(height: 10),
-            CarouselSlider(
+            carousel.CarouselSlider(
               items: slidePromotion.map((item) {
                 return Container(
                   height: 180,
@@ -81,7 +83,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 );
               }).toList(),
-              options: CarouselOptions(
+              options: carousel.CarouselOptions(
                 height: 180,
                 viewportFraction: 1,
                 autoPlayInterval: Duration(seconds: 2),
