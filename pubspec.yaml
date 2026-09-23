@@ -37,6 +37,10 @@ dependencies:
   provider: ^6.1.5+1
   carousel_slider: ^5.1.2
   badges: ^3.2.0
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
 dev_dependencies:
   flutter_test:
     sdk: flutter

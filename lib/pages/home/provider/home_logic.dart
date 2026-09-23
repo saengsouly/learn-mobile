@@ -32,16 +32,26 @@ class HomeLogic extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       print('error ==>$e');
+<<<<<<< HEAD
       _homeState = homeState.copyWith(
         homeStatus: HomeStatus.error,
         cartlist: [],
       );
+=======
+      _homeState = homeState.copyWith(homeStatus: HomeStatus.error);
+>>>>>>> upstream/main
       notifyListeners();
     }
   }
 
+<<<<<<< HEAD
   void addToCart(int id) {
     ProductsModel item = _homeState.productList[id];
+=======
+  // ເພີ່ມເຂົ້າກະຕ່າ
+  void addToCart(int id) {
+    // ProductsModel item = _homeState.productList[index];
+>>>>>>> upstream/main
     // ສຳເນົາ List ເກົ່າອອກມາສ້າງເປັນ List ໃໝ່
     List<CartModel> newCopyCart = List<CartModel>.from(
       _homeState.cartList ?? [],
@@ -54,6 +64,7 @@ class HomeLogic extends ChangeNotifier {
       newCopyCart[indexItem].qty = newCopyCart[indexItem].qty + 1;
       print('qty ==${newCopyCart[indexItem].qty}');
     } else {
+<<<<<<< HEAD
       // ຖ້າວ່າຍັງບໍ່ມີ ເເມ່ນໃຫ້ເພີ່ມເປັນລາຍການໃໝ່
       newCopyCart.add(CartModel(qty: 1, product: item));
     }
@@ -67,15 +78,47 @@ class HomeLogic extends ChangeNotifier {
   // ລົບຈຳນວນອອກຈາກກະຕ່າ
   void removeCart(int index) {
     ProductsModel item = _homeState.productList[index];
+=======
+      ProductsModel item = _homeState.productList.singleWhere(
+        (e) => e.id == id,
+      );
+
+      // List<ProductsModel> items = _homeState.productList
+      //     .where((e) => e.id == id)
+      //     .toList();
+      // ProductsModel? items;
+      // for (var i = 0; i < _homeState.productList.length; i++) {
+      //   if(_homeState.productList[i].id == id){
+      //     items = _homeState.productList[i];
+      //     break;
+      //   }
+      // }
+      // ຖ້າວ່າຍັງບໍ່ມີ ເເມ່ນໃຫ້ເພີ່ມເປັນລາຍການໃໝ່
+      newCopyCart.add(CartModel(qty: 1, product: item));
+    }
+    _homeState = homeState.copyWith(cartList: newCopyCart);
+    notifyListeners();
+  }
+
+  // ລົບຈຳນວນອອກຈາກກະຕ່າ
+  void removeCart(int id) {
+    // ProductsModel item = _homeState.productList[index];
+>>>>>>> upstream/main
     // ສຳເນົາ List ເກົ່າອອກມາສ້າງເປັນ List ໃໝ່
     List<CartModel> newCopyCart = List<CartModel>.from(
       _homeState.cartList ?? [],
     );
     //ຫາຕຳເເໜ່ງ index ຂອງສິນຄ້າທີ່ມີຢູ່ໃນກະຕ່າ,ຖ້າບໍ່ເຫັນມັນຈະໄດ້ເປັນ -1
+<<<<<<< HEAD
     int indexItem = newCopyCart.indexWhere((e) => e.product?.id == item.id);
 
     if (indexItem == -1)
       return; // ຖ້າວ່າຫາຕຳເເໜ່ງໃນ list ບໍ່ພົບເຫັນບອກໃຫ້ program ຢຸດເຮັດວຽກທັນທີ
+=======
+    int indexItem = newCopyCart.indexWhere((e) => e.product?.id == id);
+
+    if (indexItem == -1)return; // ຖ້າວ່າຫາຕຳເເໜ່ງໃນ list ບໍ່ພົບເຫັນບອກໃຫ້ program ຢຸດເຮັດວຽກທັນທີ
+>>>>>>> upstream/main
     if (newCopyCart[indexItem].qty > 1) {
       // ກວດສອບວ່າ ຖ້າຈຳນວນໃນ index ນັ້ນໃຫ່ຍກວ່າ 1 ເເມ່ນໃຫ້ລົບ
       newCopyCart[indexItem].qty = newCopyCart[indexItem].qty - 1;
@@ -84,7 +127,18 @@ class HomeLogic extends ChangeNotifier {
       newCopyCart.removeAt(indexItem);
     }
     // ເອົາຂໍ້ມູນກ້ອນໃໝ່ໄປເເທນຂໍ້ມູນເກົ່າທີ່ມີຢູ່ໃນ cartList ນັ້ນ
+<<<<<<< HEAD
     _homeState = homeState.copyWith(cartlist: newCopyCart);
+=======
+    _homeState = homeState.copyWith(cartList: newCopyCart);
+    notifyListeners();
+  }
+
+  // ລົບກະຕ່າຖີ້ມ
+  void deleteAllCart() {
+     _homeState.cartList?.clear();
+    // _homeState = homeState.copyWith(cartList: []);
+>>>>>>> upstream/main
     notifyListeners();
   }
 }

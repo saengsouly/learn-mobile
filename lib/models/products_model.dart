@@ -31,6 +31,10 @@ class ProductsModel {
   final Meta? meta;
   final List<String>? images;
   final String? thumbnail;
+<<<<<<< HEAD
+=======
+  final int? qty ;
+>>>>>>> upstream/main
 
   ProductsModel({
     this.id,
@@ -55,8 +59,33 @@ class ProductsModel {
     this.meta,
     this.images,
     this.thumbnail,
+<<<<<<< HEAD
   });
 
+=======
+    this.qty,
+  });
+
+  ProductsModel copyWith({
+    int? id,
+    String? title,
+    String? description,
+    String? category,
+    double? price,
+    double? discountPercentage,
+    int? qty,
+  }) {
+    return ProductsModel(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      price: price ?? this.price,
+      discountPercentage: discountPercentage ?? this.discountPercentage,
+      qty: qty ?? this.qty,
+    );
+  }
+
+>>>>>>> upstream/main
   factory ProductsModel.fromJson(Map<String, dynamic> json) => ProductsModel(
     id: json["id"],
     title: json["title"],
@@ -88,6 +117,10 @@ class ProductsModel {
         ? []
         : List<String>.from(json["images"]!.map((x) => x)),
     thumbnail: json["thumbnail"],
+<<<<<<< HEAD
+=======
+    qty: json['qty'],
+>>>>>>> upstream/main
   );
 
   Map<String, dynamic> toJson() => {

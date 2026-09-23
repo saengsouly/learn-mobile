@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:learn_app/constants/app_color.dart';
 import 'package:learn_app/constants/app_image.dart';
 import 'package:learn_app/constants/data_demo.dart';
+<<<<<<< HEAD
+=======
+import 'package:learn_app/models/products_model.dart';
+import 'package:learn_app/pages/cart/cart_page.dart';
+>>>>>>> upstream/main
 import 'package:learn_app/pages/home/components/badges_product.dart';
 import 'package:learn_app/pages/home/components/product_list.dart';
 import 'package:learn_app/pages/home/provider/home_logic.dart';
@@ -17,6 +22,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+<<<<<<< HEAD
+=======
+  List<ProductsModel> cartList = [];
+
+>>>>>>> upstream/main
   @override
   void initState() {
     super.initState();
@@ -27,6 +37,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    print('cart ==>${cartList.length}');
     return SafeArea(
       child: SingleChildScrollView(
         padding: EdgeInsets.only(left: 16, right: 16, top: 20, bottom: 20),
@@ -48,7 +59,19 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Spacer(),
                 IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+<<<<<<< HEAD
                 BadgesProduct(),
+=======
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CartPage()),
+                    );
+                  },
+                  child: BadgesProduct(),
+                ),
+>>>>>>> upstream/main
               ],
             ),
             // ສະເເດງ slide ສິນຄ້າ,ໂຄສະນະ
