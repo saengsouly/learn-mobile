@@ -115,29 +115,34 @@ class ProductList extends StatelessWidget {
                               style: myTextStyle(fontSize: 10),
                             ),
                             Spacer(),
-                            Container(
-                              padding: EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(6),
-                                gradient: LinearGradient(
-                                  //ແມ່ນໃຊ້ສຳລັບ ການໄລ່ລະດັບສີ (Color Gradient)
-                                  colors: [
-                                    Colors
-                                        .deepOrange, //ເລີ່ມຕົ້ນດ້ວຍສີສົ້ມເຂັ້ມ
-                                    Colors.orange, // ແລ້ວຄ່ອຍໆກາຍເປັນສີສົ້ມ
-                                    Colors
-                                        .orangeAccent, //ແລະຈົບລົງດ້ວຍສີສົ້ມສະຫວ່າງ
-                                  ],
-                                  begin: AlignmentGeometry
-                                      .centerLeft, //ໝາຍເຖິງ ເລີ່ມຕົ້ນໄລ່ສີຈາກທາງດ້ານຊ້າຍ (ກາງຊ້າຍ)
-                                  end: AlignmentGeometry
-                                      .centerRight, //ໝາຍເຖິງ ໄປສິ້ນສຸດຢູ່ທາງດ້ານຂວາ (ກາງຂວາ)
+                            GestureDetector(
+                              onTap: () {
+                                context.read<HomeLogic>().addToCart(index);
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(4),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(6),
+                                  gradient: LinearGradient(
+                                    //ແມ່ນໃຊ້ສຳລັບ ການໄລ່ລະດັບສີ (Color Gradient)
+                                    colors: [
+                                      Colors
+                                          .deepOrange, //ເລີ່ມຕົ້ນດ້ວຍສີສົ້ມເຂັ້ມ
+                                      Colors.orange, // ແລ້ວຄ່ອຍໆກາຍເປັນສີສົ້ມ
+                                      Colors
+                                          .orangeAccent, //ແລະຈົບລົງດ້ວຍສີສົ້ມສະຫວ່າງ
+                                    ],
+                                    begin: AlignmentGeometry
+                                        .centerLeft, //ໝາຍເຖິງ ເລີ່ມຕົ້ນໄລ່ສີຈາກທາງດ້ານຊ້າຍ (ກາງຊ້າຍ)
+                                    end: AlignmentGeometry
+                                        .centerRight, //ໝາຍເຖິງ ໄປສິ້ນສຸດຢູ່ທາງດ້ານຂວາ (ກາງຂວາ)
+                                  ),
                                 ),
-                              ),
-                              child: Icon(
-                                Icons.shopping_cart_sharp,
-                                size: 12,
-                                color: AppColors.whiteColor,
+                                child: Icon(
+                                  Icons.shopping_cart_sharp,
+                                  size: 12,
+                                  color: AppColors.whiteColor,
+                                ),
                               ),
                             ),
                           ],
