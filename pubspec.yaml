@@ -37,6 +37,7 @@ dependencies:
   provider: ^6.1.5+1
   carousel_slider: ^5.1.2
   badges: ^3.2.0
+  dio: ^5.11.1
 
 dev_dependencies:
   flutter_test:

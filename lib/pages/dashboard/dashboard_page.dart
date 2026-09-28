@@ -33,6 +33,7 @@ class _DashboardPageState extends State<DashboardPage> {
       body: _widget[selectIndex],
       // body:  selectIndex == 0 ? HomePage(): selectIndex,
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectIndex,
         showSelectedLabels: true,
         showUnselectedLabels: true,
         selectedItemColor: AppColors.primaryColor,

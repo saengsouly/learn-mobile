@@ -46,6 +46,7 @@ class AddRemoveCart extends StatelessWidget {
           ),
           // ຈຳນວນ
           Container(
+            // width: 44,
             constraints: BoxConstraints(minWidth: 44),
             alignment: Alignment.center,
             padding: EdgeInsets.symmetric(horizontal: 8),

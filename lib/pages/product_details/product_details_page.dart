@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:learn_app/constants/app_color.dart';
+import 'package:learn_app/pages/home/provider/home_logic.dart';
 import 'package:learn_app/pages/product_details/components/add_remove_cart.dart';
 import 'package:learn_app/pages/product_details/components/bottom_navigate.dart';
 import 'package:learn_app/pages/product_details/components/product_image_slide.dart';
 import 'package:learn_app/widgets/my_text_style.dart';
+import 'package:provider/provider.dart';
 
 import '../../models/products_model.dart';
 
@@ -44,8 +46,9 @@ class ProductDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final logic = context.watch<HomeLogic>();
     return Scaffold(
-      backgroundColor: AppColors.whiteColor,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: AppColors.primaryColor,
         title: Text(
@@ -88,7 +91,10 @@ class ProductDetailsPage extends StatelessWidget {
                   SizedBox(height: 12),
                   _buildStock(),
                   _divider(),
-                  _buildQtySection(),
+                  _buildQtySection(
+                    context,
+                    cartQty: logic.selectedQty.toString(),
+                  ),
                   _divider(),
                   _buildDescription(),
                   _divider(),
@@ -101,7 +107,24 @@ class ProductDetailsPage extends StatelessWidget {
       ),
       bottomNavigationBar: BottomNavigate(
         // TODO: ຂ້ອຍຈະຂຽນເອງ
-        addToCart: () {},
+        addToCart: () {
+          context.read<HomeLogic>().addToCart(
+            data.id ?? 0,
+            qty: logic.selectedQty,
+          );
+          context.read<HomeLogic>().updateQtyFromCart(data.id ?? 0);
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              behavior: SnackBarBehavior.fixed,
+              duration: Duration(seconds: 2),
+              backgroundColor: AppColors.successColor,
+              content: Text(
+                'ສັ່ງຊື້ສຳເລັດ',
+                style: myTextStyle(color: AppColors.whiteColor),
+              ),
+            ),
+          );
+        },
         buyNow: () {},
       ),
     );
@@ -266,7 +289,7 @@ class ProductDetailsPage extends StatelessWidget {
   }
 
   // ---------------- ເລືອກຈຳນວນ + ລາຄາລວມ ----------------
-  Widget _buildQtySection() {
+  Widget _buildQtySection(BuildContext context, {required String cartQty}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -278,10 +301,13 @@ class ProductDetailsPage extends StatelessWidget {
             ),
             Spacer(),
             AddRemoveCart(
-              qty: '$qty',
-              // TODO: ຂ້ອຍຈະຂຽນເອງ
-              add: () {},
-              remove: () {},
+              qty: '$cartQty',
+              add: () {
+                context.read<HomeLogic>().addQty(max: 5);
+              },
+              remove: () {
+                context.read<HomeLogic>().removeQty(min: 1);
+              },
             ),
           ],
         ),
