@@ -136,8 +136,10 @@ class ProductList extends StatelessWidget {
                               ),
                               Spacer(),
                               GestureDetector(
-                                onTap: (){
-                                  context.read<HomeLogic>().addToCart(item.id ?? 0);
+                                onTap: () {
+                                  context.read<HomeLogic>().addToCart(
+                                    item.id ?? 0,
+                                  );
                                 },
                                 child: Container(
                                   padding: EdgeInsets.all(4),
