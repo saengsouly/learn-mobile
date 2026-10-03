@@ -170,10 +170,7 @@ packages:
       sha256: "1741988757a65eb6b36abe716829688cf01910bbf91c34354ff7ec1c3de2b349"
       url: "https://pub.dev"
     source: hosted
-<<<<<<< HEAD
     version: "1.18.0"
-=======
-    version: "1.19.0"
   mime:
     dependency: transitive
     description:
@@ -182,7 +179,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
->>>>>>> upstream/main
   nested:
     dependency: transitive
     description:
@@ -259,10 +255,7 @@ packages:
       sha256: "949a932224383300f01be9221c39180316445ecb8e7547f70a41a35bf421fb9e"
       url: "https://pub.dev"
     source: hosted
-<<<<<<< HEAD
     version: "0.7.11"
-=======
-    version: "0.7.12"
   typed_data:
     dependency: transitive
     description:
@@ -271,7 +264,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
->>>>>>> upstream/main
   vector_math:
     dependency: transitive
     description:
