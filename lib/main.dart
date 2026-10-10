@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
+
 import 'package:learn_app/core/theme/app_theme.dart';
 import 'package:learn_app/presentation/pages/splash/splash.dart';
 import 'package:learn_app/presentation/providers/home/home_logic.dart';
