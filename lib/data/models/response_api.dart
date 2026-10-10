@@ -7,12 +7,10 @@ import 'dart:convert';
 ResponseApi responseApiFromJson(String str) =>
     ResponseApi.fromJson(json.decode(str));
 
-String responseApiToJson(ResponseApi data) => json.encode(data.toJson());
-
 class ResponseApi {
   final String? message;
   final bool? success;
-  final dynamic data;
+  final dynamic data; // data type dynamic ຮັບຂໍ້ມູນເເບບໃດກໍ່ໄດ້
 
   ResponseApi({this.message, this.success = true, this.data});
 
@@ -21,10 +19,4 @@ class ResponseApi {
     success: json["success"],
     data: json["data"],
   );
-
-  Map<String, dynamic> toJson() => {
-    "message": message,
-    "success": success,
-    "data": data,
-  };
 }

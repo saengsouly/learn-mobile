@@ -4,8 +4,14 @@ import 'package:learn_app/presentation/providers/login/login_logic.dart';
 import 'package:learn_app/presentation/pages/register/register_page.dart';
 import 'package:provider/provider.dart';
 
+<<<<<<< HEAD:lib/presentation/pages/login/login_page.dart
 import 'package:learn_app/core/constants/app_color.dart';
 import 'package:learn_app/shared/widgets/my_text_style.dart';
+=======
+import '../../constants/app_color.dart';
+import '../../widgets/alert_loading.dart';
+import '../../widgets/my_text_style.dart';
+>>>>>>> upstream/main:lib/pages/login/login_page.dart
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -97,7 +103,13 @@ class _LoginPageState extends State<LoginPage> {
                       if (value == null || value.isEmpty) {
                         return 'ກະລຸນາປ້ອນອີເມວ';
                       }
+<<<<<<< HEAD:lib/presentation/pages/login/login_page.dart
 
+=======
+                      // if (!value.contains('@')) {
+                      //   return 'ອີເມວບໍ່ຖືກຕ້ອງ';
+                      // }
+>>>>>>> upstream/main:lib/pages/login/login_page.dart
                       return null;
                     },
                   ),
@@ -192,7 +204,10 @@ class _LoginPageState extends State<LoginPage> {
                         //     print('ມີຂໍ້ມູນເເລ້ວ');
                         //   }
                         if (_formKey.currentState!.validate()) {
+<<<<<<< HEAD:lib/presentation/pages/login/login_page.dart
                           print('ມີຂໍ້ມູນເເລ້ວ');
+=======
+>>>>>>> upstream/main:lib/pages/login/login_page.dart
                           context.read<LoginLogic>().login(
                             context: context,
                             username: _emailController.text,
